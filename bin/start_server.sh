@@ -7,4 +7,4 @@ if [ ! -f "$APP_PATH" ]; then
     exit 1
 fi
 
-python "$APP_PATH"
+nohup python "$APP_PATH" > /var/log/app.log 2>&1 &
