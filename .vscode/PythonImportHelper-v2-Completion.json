@@ -8,11 +8,19 @@
         "documentation": {}
     },
     {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "hello_world",
         "kind": 2,
         "importPath": "src.app",
         "description": "src.app",
-        "peekOfCode": "def hello_world():\n    return 'This is a test website. Do not share it with anyone. This is a test new line. This is a test new stack line.'\nif __name__ == '__main__':\n    app.run(debug=True, host='0.0.0.0', port=80)",
+        "peekOfCode": "def hello_world():\n    return render_template('page.html')\nif __name__ == '__main__':\n    app.run(debug=True, host='0.0.0.0', port=80)",
         "detail": "src.app",
         "documentation": {}
     },
@@ -21,7 +29,7 @@
         "kind": 5,
         "importPath": "src.app",
         "description": "src.app",
-        "peekOfCode": "app = Flask(__name__)\n@app.route('/')\ndef hello_world():\n    return 'This is a test website. Do not share it with anyone. This is a test new line. This is a test new stack line.'\nif __name__ == '__main__':\n    app.run(debug=True, host='0.0.0.0', port=80)",
+        "peekOfCode": "app = Flask(__name__, template_folder='../templates',\n            static_folder='../static')\n@app.route('/')\ndef hello_world():\n    return render_template('page.html')\nif __name__ == '__main__':\n    app.run(debug=True, host='0.0.0.0', port=80)",
         "detail": "src.app",
         "documentation": {}
     }

@@ -1,11 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates',
+            static_folder='../static')
 
 
 @app.route('/')
 def hello_world():
-    return 'This is a test website. Do not share it with anyone. This is a test new line. This is a test new stack line.'
+    return render_template('page.html')
 
 
 if __name__ == '__main__':
