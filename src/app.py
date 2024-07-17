@@ -22,7 +22,7 @@ def discord():
     if request.method == 'POST':
         message = request.form['message']
         if message:
-            send_to_discord(message)
+            send_to_discord(message + " Repetition: 0")
             send_to_discord(message + " Repetition: 1")
             send_to_discord(message + " Repetition: 2")
             send_to_discord(message + " Repetition: 3")
