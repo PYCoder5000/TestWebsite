@@ -22,12 +22,8 @@ def discord():
     if request.method == 'POST':
         message = request.form['message']
         if message:
-            send_to_discord(message + " Repetition: 0")
-            send_to_discord(message + " Repetition: 1")
-            send_to_discord(message + " Repetition: 2")
-            send_to_discord(message + " Repetition: 3")
-            send_to_discord(message + " Repetition: 4")
-            send_to_discord(message + " Repetition: 5")
+            for i in range(146):
+                send_to_discord(message + f" Repetition: {i}")
             return redirect(url_for('discord'))
     return render_template('discord.html')
 
