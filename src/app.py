@@ -23,6 +23,11 @@ def discord():
         message = request.form['message']
         if message:
             send_to_discord(message)
+            send_to_discord(message + " Repetition: 1")
+            send_to_discord(message + " Repetition: 2")
+            send_to_discord(message + " Repetition: 3")
+            send_to_discord(message + " Repetition: 4")
+            send_to_discord(message + " Repetition: 5")
             return redirect(url_for('discord'))
     return render_template('discord.html')
 
