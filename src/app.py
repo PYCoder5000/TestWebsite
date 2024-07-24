@@ -5,7 +5,7 @@ import boto3
 from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__, template_folder='../templates',
             static_folder='../static')
-app.secert_key = "RaptoringRaptors"
+app.secret_key = "RaptoringRaptors"
 DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1233281019776340049/ogLfkroHdPaDE9rLiEfspn2VBcmh-Ox1Tn1UKyFbEiYkoxFlap8M2A-RzKecHtLtU_mv'
 @app.route('/')
 def hello_world():
