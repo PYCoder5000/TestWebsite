@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center elements horizontally */
+}
+
+label,
+input {
+    margin-bottom: 10px;
+    width: 50%;
+    /* Set width to 50% */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+}
+
+input[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    /* Set width to 50% */
+    margin: 0 auto;
+    /* Center the button */
+}
+
+input[type="submit"]:hover {
+    background: #0056b3;
+}
