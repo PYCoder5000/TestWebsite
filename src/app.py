@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 import random
 import boto3
+import re
 app = Flask(__name__, template_folder='../templates',
             static_folder='../static')
 app.secret_key = "RaptoringRaptors"
@@ -16,6 +17,7 @@ dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 table = dynamodb.Table('WebStackDbStack3CD8F8E5-AccountsBE8A900E-6FQFLCPFKBFD')
 ses = boto3.client('ses', region_name='us-east-1')
 s = URLSafeTimedSerializer(app.secret_key + "BUTNO")
+PRE = r"[a-z]{1, }[0-9]{1, }"
 @app.route('/random')
 def random_number():
     return {'randomNumber': random_int}
@@ -43,6 +45,8 @@ def register():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
+        if not re.match(PRE, password):
+            return "Please make sure that you include at least 1 LOWERCASE letter and then follow it with at least 1 NUMBER!"
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
         table.put_item(
             Item={
