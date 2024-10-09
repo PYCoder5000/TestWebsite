@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ChatRoom</title>
+</head>
+
+<body>
+    <h1>ChatRoom</h1>
+    <div id="chat"></div>
+    <input type="text" id="messageInput" placeholder="message" />
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const ws = new WebSocket('wss://wx953pz8ra.execute-api.us-east-1.amazonaws.com/dev');
+
+        ws.onopen = () => {
+            console.log('Connected to chat server.');
+        };
+
+        ws.onmessage = (event) => {
+            const chat = document.getElementById('chat');
+            const message = document.createElement('div');
+            message.textContent = event.data;
+            chat.appendChild(message);
+        };
+
+        ws.onclose = () => {
+            console.log('Disconnected from chat server.');
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value;
+            ws.send(JSON.stringify({ action: 'sendmessage', message }));
+            input.value = '';
+        }
+    </script>
+</body>
+
+</html>

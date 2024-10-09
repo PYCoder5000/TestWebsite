@@ -18,6 +18,14 @@ table = dynamodb.Table('WebStackDbStack3CD8F8E5-AccountsBE8A900E-6FQFLCPFKBFD')
 ses = boto3.client('ses', region_name='us-east-1')
 s = URLSafeTimedSerializer(app.secret_key + "BUTNO")
 PRE = r"[a-z]{1, }[0-9]{1, }"
+@app.route('/chat', methods=['GET', 'POST'])
+def chat():
+    return render_template('chat.html')
+@app.route('/weather', methods=['GET', 'POST'])
+def get_weather():
+    data = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Milpitas&appid=bd26e2b50786f956d7ed54d34a952399&units=metric")
+    dataJson = data.json()
+    return str(dataJson["main"]["temp"])
 @app.route('/random')
 def random_number():
     return {'randomNumber': random_int}
